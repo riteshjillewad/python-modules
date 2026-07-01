@@ -438,3 +438,77 @@ def find_first_occurrence(number: int, target_digit: int) -> int:
             return i
 
     return -1
+
+def find_last_occurrence(number: int, target_digit: int) -> int:
+    """
+    Finds the 0-based index of the last (rightmost) occurrence of a target digit.
+    Returns -1 if the digit is not found.
+
+    Parameters:
+    ----------------------------
+    number: int
+    target_digit: int
+
+    Returns:
+    ----------------------------
+    int
+        Index of the last occurrence, or -1
+    """
+
+    digits_list = list()
+    number = abs(number)
+
+    if number == 0:
+        if target_digit == 0:
+            return 0
+        else:
+            return -1
+        
+    while number != 0:
+        digit = number % 10
+        digits_list.append(digit)
+        number = number // 10
+
+    digits_list.reverse()
+
+    for i in range(len(digits_list) - 1, -1, -1):       # start = from end list, end = -1(till 0), step = -1
+        if digits_list[i] == target_digit:
+            return i
+        
+    return -1
+
+def find_all_occurrences(number: int, target_digit: int) -> list[int]:
+    """
+    Finds all 0-based indices of a target digit using mathematical list extraction.
+    
+    Parameters:
+    ----------------------------
+    number: int
+    target_digit: int
+
+    Returns:
+    ----------------------------
+    list
+        List of all occurences of index
+    """
+    
+    if number == 0:
+        return [0] if target_digit == 0 else []
+
+    number = abs(number)
+    digits_list = []
+
+    while number != 0:
+        digits_list.append(number % 10)
+        number = number // 10
+
+    digits_list.reverse()
+
+    # We traverse the list and add the matching indices
+    matching_indices = []
+    for i in range(len(digits_list)):
+        if digits_list[i] == target_digit:
+            matching_indices.append(i)
+
+    return matching_indices
+
