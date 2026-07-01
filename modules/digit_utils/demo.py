@@ -18,8 +18,8 @@ def main():
 
 # <-----    ADD MORE FUNCTIONS FOR TESTING     ------>
 
-    ret = count_zero_digits(num)
-    print(f"Total zero digits: {ret}")
+    ret = count_occurrences(num, 3)
+    print(f"Count of 15 in {num}: {ret}")
 
 if __name__ == "__main__":
     main()

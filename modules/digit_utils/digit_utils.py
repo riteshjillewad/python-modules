@@ -18,7 +18,7 @@ Functions:
 # Basic Digit Operations
 ###########################################################################################
 
-def count_digits(number):
+def count_digits(number: int) -> int:
     """
     Counts the total number of digits in a number
 
@@ -46,7 +46,7 @@ def count_digits(number):
 
     return digitCount
 
-def sum_digits(number):
+def sum_digits(number: int) -> int:
     """
     Returns the sum of all digits
 
@@ -72,7 +72,7 @@ def sum_digits(number):
 
     return digitsSum
 
-def product_digits(number):
+def product_digits(number: int) -> int:
     """
     Returns the product of all digits
 
@@ -99,7 +99,7 @@ def product_digits(number):
 
     return product
 
-def reverse_number(number):
+def reverse_number(number: int) -> int:
     """
     Returns the reversed number
 
@@ -131,7 +131,7 @@ def reverse_number(number):
 
     return sign * reverse
 
-def first_digit(number):
+def first_digit(number: int) -> int:
     """
     Returns first digit from number
 
@@ -156,7 +156,7 @@ def first_digit(number):
 
     return number
 
-def last_digit(number):
+def last_digit(number: int) -> int:
     """
     Returns the last digit from number
 
@@ -172,7 +172,7 @@ def last_digit(number):
 
     return abs(number) % 10
 
-def middle_digit(number):
+def middle_digit(number: int) -> int:
     """
     Returns the middle digit(s) of a number.
     If the number has an even amount of digits, returns the two middle digits.
@@ -199,7 +199,7 @@ def middle_digit(number):
         # EVEN: Return the two middle digits combined
         return int(num_str[mid_index - 1 : mid_index + 1])
     
-def replace_digit(number, target_digit, new_digit):
+def replace_digit(number: int, target_digit: int, new_digit: int) -> int:
     """
     Replaces the target digit with new digit
 
@@ -232,7 +232,7 @@ def replace_digit(number, target_digit, new_digit):
 # Digit Counting Operations
 ###########################################################################################
 
-def count_even_digits(number):
+def count_even_digits(number: int) -> int:
     """
     Return the count of even digits
 
@@ -260,7 +260,7 @@ def count_even_digits(number):
 
     return even_digit_count
 
-def count_odd_digits(number):
+def count_odd_digits(number: int) -> int:
     """
     Return the count of odd digits
 
@@ -285,7 +285,7 @@ def count_odd_digits(number):
 
     return odd_digit_count
 
-def count_zero_digits(number):
+def count_zero_digits(number: int) -> int:
     """
     Return the count of zero digits
 
@@ -310,7 +310,7 @@ def count_zero_digits(number):
 
     return zero_digit_count
 
-def count_zero_digits(number):
+def non_zero_digit_count(number: int) -> int:
     """
     Return the count of non-zero digits
 
@@ -335,7 +335,7 @@ def count_zero_digits(number):
 
     return non_zero_digit_count
 
-def count_occurrences(number, target_digit):
+def count_occurrences(number: int, target_digit: int) -> int:
     """
     Returns the count of target digit
 
@@ -349,7 +349,7 @@ def count_occurrences(number, target_digit):
     int
         Occurences of target digit
     """
-    
+
     if number == 0:
         return 1 if target_digit == 0 else 0
 
@@ -363,3 +363,34 @@ def count_occurrences(number, target_digit):
         number = number // 10
 
     return target_digit_count
+
+###########################################################################################
+# Digit Searching Operations
+###########################################################################################
+
+def contains_digit(number: int, target_digit: int) -> bool:
+    """
+    Checks if number contains target digit
+
+    Parameters:
+    ----------------------------
+    number: int
+    target_digit: int
+
+    Returns:
+    ----------------------------
+    Boolean
+        True or False
+    """
+
+    if number == 0 and target_digit == 0:
+        return True
+    
+    number = abs(number)
+
+    while number != 0:
+        if number % 10 == target_digit:
+            return True
+        number = number // 10
+
+    return False
