@@ -12,6 +12,28 @@ digit_utils.py
 A collection of utility functions for digit-based operations.
 
 Functions:
+def count_digits(number)
+def sum_digits(number)
+def product_digits(number)
+def reverse_number(number)
+def first_digit(number)
+def last_digit(number)
+def middle_digit(number)
+def replace_digit(number, target_digit, new_digit)
+
+def count_even_digits(number)
+def count_odd_digits(number)
+def count_zero_digits(number)
+def count_non_zero_digits(number)
+def count_occurences(number, target_digit)
+
+def contains_digit(number, target_digit)
+def find_first_occurence(number, target_digit)
+def find_last_occurence(number, target_digit)
+def find_all_occurences(number, target_digit)
+
+def digit_frequency(number, target_digit)
+
 """
 
 ###########################################################################################
@@ -491,7 +513,7 @@ def find_all_occurrences(number: int, target_digit: int) -> list[int]:
     list
         List of all occurences of index
     """
-    
+
     if number == 0:
         return [0] if target_digit == 0 else []
 
@@ -512,3 +534,68 @@ def find_all_occurrences(number: int, target_digit: int) -> list[int]:
 
     return matching_indices
 
+def digit_frequency(number: int, target_digit: int) -> int:
+    """
+    Returns the frequency of target digit
+
+    Parameters:
+    ----------------------------
+    number: int
+    target_digit: int
+
+    Returns:
+    ----------------------------
+    int
+        Frequency of digit
+    """
+
+    count = 0
+    number = abs(number)
+
+    if number == 0:
+        return 1 if target_digit == 0 else 0
+
+    while number != 0:
+        digit = number % 10
+        if digit == target_digit:
+            count += 1
+        number = number // 10
+
+    return count
+
+def most_frequent_digit(number: int) -> int:
+    """
+    Returns most frequent digit 
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    int
+        Most frequent digit
+    """
+
+    if number == 0:
+        return 0
+    
+    number = abs(number)
+    frequencies = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+    # Counting the occurences of each digit
+    while number != 0:
+        digit = number % 10
+        frequencies[digit] += 1
+        number = number // 10
+
+    max_count = 0
+    most_frequent = 0
+
+    # We now check for most frequent
+    for i in range(10):
+        if frequencies[i] > max_count:
+            max_count = frequencies[i]
+            most_frequent = i
+
+    return most_frequent
