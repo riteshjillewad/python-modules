@@ -32,14 +32,15 @@ def count_digits(number):
         Total number of digits
     """
 
-    digit = 0
     digitCount = 0
 
     if number == 0:
         return 1
     
+    if number < 0:
+        number = abs(number)
+    
     while number != 0:
-        digit = number % 10
         digitCount = digitCount + 1
         number = number // 10
 
