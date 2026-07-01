@@ -16,27 +16,10 @@ def main():
     ret = count_digits(num)
     print(f"Number of digits in {num}: {ret}")
 
-    ret = sum_digits(num)
-    print(f"Sum of digits of {num}: {ret}")
+# <-----    ADD MORE FUNCTIONS FOR TESTING     ------>
 
-    ret = product_digits(num)
-    print(f"Product of digits of {num}: {ret}")
-
-    ret = reverse_number(num)
-    print(f"Reversed number: {ret}")
-
-    ret = first_digit(num)
-    print(f"First digit: {ret}")
-
-    ret = last_digit(num)
-    print(f"Last digit: {ret}")
-
-    ret = middle_digit(num)
-    print(f"Middle digit: {ret}")
-
-    ret = replace_digit(num, 1, 5)
-    print(f"Original digit: {num}")
-    print(f"Replaced digit: {ret}")
+    ret = count_zero_digits(num)
+    print(f"Total zero digits: {ret}")
 
 if __name__ == "__main__":
     main()

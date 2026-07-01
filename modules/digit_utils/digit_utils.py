@@ -199,13 +199,15 @@ def middle_digit(number):
         # EVEN: Return the two middle digits combined
         return int(num_str[mid_index - 1 : mid_index + 1])
     
-def replace_digit(number, targetDigit, newDigit):
+def replace_digit(number, target_digit, new_digit):
     """
     Replaces the target digit with new digit
 
     Parameters:
     ----------------------------
     number: int
+    number: targetDigit
+    number: newDigit
 
     Returns:
     ----------------------------
@@ -219,9 +221,145 @@ def replace_digit(number, targetDigit, newDigit):
         sign = 1
 
     # converting number to string
-    numberStr = str(abs(number))
+    number_str = str(abs(number))
 
     # making use of .replace(target, replacement)
-    newNumStr = numberStr.replace(str(targetDigit), str(newDigit))
+    new_num_str = number_str.replace(str(target_digit), str(new_digit))
 
-    return sign * int(newNumStr)
+    return sign * int(new_num_str)
+
+###########################################################################################
+# Digit Counting Operations
+###########################################################################################
+
+def count_even_digits(number):
+    """
+    Return the count of even digits
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    int
+        Even digits count
+    """
+
+    if number == 0:
+            return 1
+
+    even_digit_count = 0
+    number = abs(number)
+
+    while number > 0:
+        digit = number % 10
+        if digit % 2 == 0:
+            even_digit_count += 1 
+        number = number // 10
+
+    return even_digit_count
+
+def count_odd_digits(number):
+    """
+    Return the count of odd digits
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    int
+        Odd digits count
+    """
+
+    odd_digit_count = 0
+    number = abs(number)
+
+    while number > 0:
+        digit = number % 10
+        if digit % 2 != 0:
+            odd_digit_count += 1 
+        number = number // 10
+
+    return odd_digit_count
+
+def count_zero_digits(number):
+    """
+    Return the count of zero digits
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    int
+        Zero digits count
+    """
+
+    zero_digit_count = 0
+    number = abs(number)
+
+    while number > 0:
+        digit = number % 10
+        if digit == 0:
+            zero_digit_count += 1
+        number = number // 10
+
+    return zero_digit_count
+
+def count_zero_digits(number):
+    """
+    Return the count of non-zero digits
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    int
+        Non-zero digits count
+    """
+
+    non_zero_digit_count = 0
+    number = abs(number)
+
+    while number > 0:
+        digit = number % 10
+        if digit != 0:
+            non_zero_digit_count += 1
+        number = number // 10
+
+    return non_zero_digit_count
+
+def count_occurrences(number, target_digit):
+    """
+    Returns the count of target digit
+
+    Parameters:
+    ----------------------------
+    number: int
+    target_digit: int
+
+    Returns:
+    ----------------------------
+    int
+        Occurences of target digit
+    """
+    
+    if number == 0:
+        return 1 if target_digit == 0 else 0
+
+    target_digit_count = 0
+    number = abs(number)
+
+    while number != 0:
+        digit = number % 10
+        if digit == target_digit:
+            target_digit_count += 1
+        number = number // 10
+
+    return target_digit_count
