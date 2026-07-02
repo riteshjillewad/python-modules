@@ -1351,3 +1351,29 @@ def extract_prime_digits(number: int) -> list[int]:
         number //= 10
 
     return prime_number_list
+
+def extract_non_prime_digits(number: int) -> list[int]:
+    """
+    Returns the list of non-prime digits from number.
+    (Non-prime digits are 0, 1, 4, 6, 8, 9)
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    list[int]:
+        List of non-prime digits
+    """
+    number = abs(number)
+    non_prime_digits = {0, 1, 4, 6, 8, 9}
+    non_prime_list = list()
+
+    while number != 0:
+        digit = number % 10
+        if digit in non_prime_digits:
+            non_prime_list.append(digit)
+        number //= 10
+
+    return non_prime_list
