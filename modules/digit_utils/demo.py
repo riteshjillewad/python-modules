@@ -10,15 +10,15 @@ from digit_utils import *
 
 def main():
 
-    num = 18
+    num = 401235789953
 
     ret = count_digits(num)
     print(f"Number of digits in {num}: {ret}")
 
 # <-----    ADD MORE FUNCTIONS FOR TESTING     ------>
 
-    ret = digital_root(num)
-    print(f"Digital root of {num}: {ret}")
+    ret = extract_prime_digits(num)
+    print(f"Original num: {num}, Prime digits: {ret}")
 
 if __name__ == "__main__":
     main()

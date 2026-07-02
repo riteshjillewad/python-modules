@@ -1056,3 +1056,298 @@ def digital_root(number: int) -> int:
         number = digit_sum
 
     return digit_sum
+
+def sum_of_squares(number: int) -> int:
+    """
+    Returns the sum of squares of digits
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    number:
+        Sum of square of digit
+    """
+
+    digit_square_sum = 0
+    number = abs(number)
+
+    while number != 0:
+        digit = number % 10
+        digit_square = digit * digit
+        digit_square_sum += digit_square
+        number = number // 10
+
+    return digit_square_sum
+
+def sum_of_cubes(number: int) -> int:
+    """
+    Returns the sum of cubes of digits
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    number:
+        Sum of cube of digit
+    """
+
+    digit_cube_sum = 0
+    number = abs(number)
+
+    while number != 0:
+        digit = number % 10
+        digit_cube = digit * digit
+        digit_cube_sum += digit_cube
+        number = number // 10
+
+    return digit_cube_sum
+
+def factorial_digit_sum(number: int) -> int:
+    """
+    Returns the sum of factorial of digits
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    number:
+        Sum of factorial of digits
+    """
+
+    number = abs(number)
+    sum_of_factorial = 0
+
+    while number != 0:
+        digit = number % 10
+
+        # Reset fact for the current digit
+        fact = 1 
+        # Calculate factorial for current digit
+        for i in range(1, digit + 1):
+            fact *= i
+            
+        sum_of_factorial += fact
+        number //= 10
+
+    return sum_of_factorial
+
+###########################################################################################
+# Digit Rearrangements
+###########################################################################################
+
+def sort_digit_ascending(number: int) -> int:
+    """
+    Returns the sorted number in ascending format
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    int:
+        Sorted number (ascending)
+    """
+
+    number = abs(number)
+    digit_list = list()
+
+    while number != 0:
+        digit = number % 10
+        digit_list.append(digit)
+        number = number // 10
+
+    # We have the sorted digit in this list
+    digit_list.sort()
+
+    # Now we will reconstruct the number
+    result = 0
+    for digit in digit_list:
+        result = (result * 10) + digit
+
+    return result
+
+def sort_digit_ascending(number: int) -> int:
+    """
+    Returns the sorted number in ascending format
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    int:
+        Sorted number (ascending)
+    """
+
+    number = abs(number)
+    digit_list = list()
+
+    while number != 0:
+        digit = number % 10
+        digit_list.append(digit)
+        number = number // 10
+
+    # We have the sorted digit in this list
+    digit_list.sort()
+
+    # Now we will reconstruct the number
+    result = 0
+    for digit in digit_list:
+        result = (result * 10) + digit
+
+    return result
+
+def sort_digit_descending(number: int) -> int:
+    """
+    Returns the sorted number in descending format.
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    int:
+        Sorted number (descending)
+    """
+
+    number = abs(number)
+    if number == 0:
+        return 0
+        
+    digit_list = list()
+
+    while number != 0:
+        digit = number % 10
+        digit_list.append(digit)
+        number = number // 10
+
+    # Sort in descending order
+    digit_list.sort(reverse=True)
+
+    # Now we reconstruct the number
+    result = 0
+    for digit in digit_list:
+        result = (result * 10) + digit
+
+    return result
+
+def get_largest_possible(number: int) -> int:
+    """
+    Returns the largest number possible by rearranging the digits.
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    int:
+        Largets possible number
+
+    """
+    return sort_digit_descending(number)
+
+def get_smallest_possible(number: int) -> int:
+    """
+    Returns the smallest number possible by rearranging the digits.
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    int:
+        Smallest possible number
+    """
+    return sort_digit_ascending(number)
+
+###########################################################################################
+# Digit Extraction
+###########################################################################################
+
+def extract_even_digits(number: int) -> list[int]:
+    """
+    Returns list of even digits from number
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    list[int]:
+        List of even digits
+    """
+
+    number = abs(number)
+    even_list = list()
+
+    while number != 0:
+        digit = number % 10
+        if digit % 2 == 0:
+            even_list.append(digit)
+        number = number // 10
+
+    return even_list
+
+def extract_odd_digits(number: int) -> list[int]:
+    """
+    Returns list of odd digits from number
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    list[int]:
+        List of odd digits
+    """
+
+    number = abs(number)
+    odd_list = list()
+
+    while number != 0:
+        digit = number % 10
+        if digit % 2 != 0:
+            odd_list.append(digit)
+        number = number // 10
+
+    return odd_list
+
+def extract_prime_digits(number: int) -> list[int]:
+    """
+    Returns the list of prime digits from number
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    list[int]:
+        List of prime digits
+    """
+
+    number = abs(number)
+    prime_digits = {2, 3, 5, 7}
+    prime_number_list = []
+
+    while number != 0:
+        digit = number % 10
+        if digit in prime_digits:
+            prime_number_list.append(digit)
+        number //= 10
+
+    return prime_number_list
