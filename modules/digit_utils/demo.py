@@ -10,15 +10,18 @@ from digit_utils import *
 
 def main():
 
-    num = 1122345
+    num = 1
 
     ret = count_digits(num)
     print(f"Number of digits in {num}: {ret}")
 
 # <-----    ADD MORE FUNCTIONS FOR TESTING     ------>
 
-    ret = unique_digits(num)
-    print(f"Unique digits in {num} are: {ret}")
+    ret = is_neon_number(num)
+    if ret == True:
+        print(f"{num} is neon")
+    else:
+        print(f"{num} is not neon")
 
 if __name__ == "__main__":
     main()

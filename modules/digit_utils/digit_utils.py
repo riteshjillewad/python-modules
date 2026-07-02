@@ -664,3 +664,186 @@ def unique_digits(number: int) -> list[int]:
         number = number // 10
 
     return sorted(list(unique_set))
+
+def duplicate_digits(number: int) -> list[int]:
+    """
+    Returns list of duplicate digits in number
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    list[int]:
+        List of duplicate digits in number
+    """
+
+    if number == 0:
+        return [0]
+    
+    number = abs(number)
+    seen = set()                            # Track digits that we encounter
+    duplicates = set()                      # To store digits that have appeared second time
+
+    while number != 0:
+        digit = number % 10
+        if digit in seen:
+            duplicates.add(digit)
+        else:
+            seen.add(digit)
+        number = number // 10
+
+    return list(duplicates)
+
+###########################################################################################
+# Digit Properties Operations
+###########################################################################################
+
+def is_palindrome(number: int) -> bool:
+    """
+    To check if number is palindrome or not
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    boolean:
+        True or False
+    """
+
+    if number < 0:
+        return False
+
+    original = number
+    rev = 0
+
+    while number != 0:
+        digit = number % 10
+        rev = rev * 10 + digit
+        number = number // 10
+
+    return original == rev
+
+def is_armstrong(number: int) -> bool:
+    """
+    Function to check if number is armstrong.
+    Numbers that equals the sum of its own digits, each raised to the power of the total number of digits
+    Ex:
+        153 -> 1^3 + 5^3 + 3^3
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    bool: 
+        True or False
+    """
+
+    if number == 0:
+        return True
+    
+    number = abs(number)
+    original = number
+    sum_digits = 0
+    digit_count = count_digits(number)
+
+    while number != 0:
+        digit = number % 10
+        sum_digits = sum_digits + digit ** digit_count
+        number = number // 10
+
+    return sum_digits == original 
+
+def is_strong(number: int) -> bool:
+    """
+    Function to check if number is strong or not.
+    Number whose sum of the factorials of its digits is equal to the original number itself
+    Ex:
+    145 = 1! + 4! + 5!
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    bool:
+        True or False
+    """
+
+    if number == 0:
+        return False
+  
+    number = abs(number)
+    original = number
+    sum_digits = 0 
+
+    while number != 0:
+        digit = number % 10
+        # <--- Factorial calcuation logic --->
+        fact = 1 
+        for i in range(digit, 0, -1):
+            fact = fact * i
+        # <--- Adding the factorial to sum --->
+        sum_digits += fact
+        number = number // 10
+
+    return original == sum_digits
+
+def is_neon_number(number: int) -> bool:
+    """
+    Checks of given number is neon number or not.
+    Number where sum of the digits of it's square is equal to the original number
+    Ex:
+        Square of number: 9^2 = 81
+        Sum the digits of the square: 8 + 1 = 9
+        sum(9) equals to the original number
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    bool:
+        True or False
+    """
+
+    number = abs(number)
+    sum_digits = 0
+    square_number = number * number
+
+    while square_number != 0:
+        digit = square_number % 10
+        sum_digits = sum_digits + digit
+        square_number = square_number // 10
+
+    return number == sum_digits
+
+def is_duck_number(number: int) -> bool:
+    """
+    Checks if a number is a Duck Number.
+    Positive number that contains atleast one 0, but 0 must not be at start
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    bool:
+        True or False
+    """
+    num_str = str(number)
+    
+    # Check if the first digit is '0'
+    if num_str[0] == '0':
+        return False
+        
+    # Check if there is at least one '0' in the rest of the string
+    return '0' in num_str
