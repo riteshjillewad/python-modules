@@ -955,3 +955,54 @@ def is_harshad(number: int) -> bool:
     """
 
     return abs(number) % sum_digits(number) == 0
+
+def is_automorphic(number: int) -> bool:
+    """
+    Checks if a number is an Automorphic number.
+    (The square of the number ends in the number itself)
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    bool:
+        True or False
+    """
+    if number < 0:
+        return False
+    
+    square = number * number
+    
+    # If number is 25 (2 digits), we need to check square % 100
+    # If number is 5 (1 digit), we need to check square % 10
+    num_digits = count_digits(number)
+    divisor = 10 ** num_digits
+    
+    return square % divisor == number
+
+def is_trimorphic(number: int) -> bool:
+    """
+    Checks if a number is a Trimorphic number.
+    (The cube of the number ends in the number itself)
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Returns:
+    ----------------------------
+    bool:
+        True or False
+    """
+    if number < 0:
+        return False
+        
+    cube = number ** 3
+    
+    # Determine the divisor based on the number of digits
+    num_digits = count_digits(number)
+    divisor = 10 ** num_digits
+    
+    return cube % divisor == number
