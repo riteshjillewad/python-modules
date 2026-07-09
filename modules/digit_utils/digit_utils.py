@@ -1480,7 +1480,6 @@ def square_digits(number: int) -> int:
     
     while number != 0:
         digit = number % 10
-        # Corrected: Squaring instead of doubling
         digit = (digit * digit) % 10
         new_number = new_number * 10 + digit
         number //= 10
@@ -1538,3 +1537,32 @@ def replace_odd_digits(number: int, target: int) -> int:
         number = number // 10
     
     return reverse_number(new_number)
+
+###########################################################################################
+# Number Construction
+###########################################################################################
+
+def digits_to_list(number: int) -> list[int]:
+    """
+    Returns the list of digits
+
+    Parameters:
+    ----------------------------
+    number: int
+
+    Return value:
+    ----------------------------
+    list[int]:
+        List of digits
+    """
+
+    digit_list = list()
+    number = abs(number)
+
+    while number != 0:
+        digit_list.append(number % 10)
+        number = number // 10
+
+    digit_list.reverse()
+
+    return digit_list

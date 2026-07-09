@@ -17,8 +17,8 @@ def main():
 
 # <-----    ADD MORE FUNCTIONS FOR TESTING     ------>
 
-    ret = replace_odd_digits(num, target=9)
-    print(f"Modified number: {ret}")
+    ret = digits_to_list(num)
+    print(f"List of digits: {ret}")
 
 if __name__ == "__main__":
     main()
