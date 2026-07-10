@@ -17,8 +17,8 @@ def main():
 
 # <-----    ADD MORE FUNCTIONS FOR TESTING     ------>
 
-    ret = digits_to_list(num)
-    print(f"List of digits: {ret}")
+    ret = second_largest_digit(num)
+    print(f"Second largest digit in {num}: {ret}")
 
 if __name__ == "__main__":
     main()

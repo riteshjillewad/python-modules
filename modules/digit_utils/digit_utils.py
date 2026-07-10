@@ -1566,3 +1566,168 @@ def digits_to_list(number: int) -> list[int]:
     digit_list.reverse()
 
     return digit_list
+
+def list_to_number(nums:list[int]) -> int:
+    """
+    Returns number from list of digits
+
+    Parameters:
+    ----------------------------
+    list[int]:
+        list of digits
+
+    Return value
+    ----------------------------
+    number:
+        Formed number
+    """
+
+    new_number = 0
+
+    for no in nums:
+        new_number = new_number * 10 + no % 10              # no % 10 -> ensures that we only add digits
+    
+    return new_number
+
+def number_to_string(number: int) -> str:
+    """
+    Returns number in string format
+
+    Parameters:
+    ----------------------------
+    int: number
+
+    Return value:
+    ----------------------------
+    str: string
+    """
+
+    return str(number)
+
+###########################################################################################
+# Digit Comparison
+###########################################################################################
+
+def largest_digit(number: int) -> int:
+    """
+    Returns the largest digit
+
+    Parameters:
+    ----------------------------
+    int: number
+
+    Return value:
+    ----------------------------
+    int:
+        Largest digit
+    """
+
+    number = abs(number)
+
+    if number == 0:
+        return 0
+
+    max_digit = 0
+
+    while number != 0:
+        digit = number % 10
+        if digit > max_digit:
+            max_digit = digit
+        number = number // 10
+    
+    return max_digit
+
+def smallest_digit(number: int) -> int:
+    """
+    Returns the smallest digit
+
+    Parameters:
+    ----------------------------
+    int: number
+
+    Return value:
+    ----------------------------
+    int:
+        Smallest digit
+    """
+
+    number = abs(number)
+    
+    if number == 0:
+        return 0
+    
+    min_digit = 9
+    
+    while number != 0:
+        digit = number % 10
+        if digit < min_digit:
+            min_digit = digit
+        number //= 10
+        
+    return min_digit
+
+def second_largest_digit(number: int) -> int:
+    """
+    Returns second largest digit 
+
+    Parameters:
+    ----------------------------
+    int: number
+
+    Return value:
+    ----------------------------
+    int:
+        Second largest digit
+    """
+
+    number = abs(number)
+    
+    first_max = -1
+    second_max = -1
+    
+    while number != 0:
+        digit = number % 10
+        
+        # second largest digit logic
+        if digit > first_max:
+            second_max = first_max
+            first_max = digit
+        elif digit > second_max and digit < first_max:
+            second_max = digit
+            
+        number //= 10
+        
+    return second_max
+
+def second_smallest_digit(number: int) -> int:
+    """
+    Returns the second smallest digit 
+
+    Parameters:
+    ----------------------------
+    int: number
+
+    Return value:
+    ----------------------------
+    int:
+        Second smallest digit
+    """
+
+    number = abs(number)
+
+    first_min = -1
+    second_min = -1
+
+    while number != 0:
+        digit = number % 10
+
+        # Logic to find the second smallest digit
+        if digit < first_min:
+            second_min = first_min
+            first_min = digit
+        elif digit < second_min and digit > first_min:
+            second_min = digit
+
+        number = number // 10
+
+    return second_min
