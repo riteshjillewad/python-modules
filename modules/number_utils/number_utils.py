@@ -413,7 +413,6 @@ def get_nth_prime(n: int) -> int:
 def generate_primes(limit: int) -> list[int]:
     """
     Generates a list of all prime numbers up to and including the limit
-    using trial division.
 
     Parameters:
     ------------------------------
@@ -440,3 +439,33 @@ def generate_primes(limit: int) -> list[int]:
             primes.append(num)
             
     return primes
+
+def count_primes(limit: int) -> int:
+    """
+    Counts the total number of prime numbers up to and including the limit
+
+    Parameters:
+    ------------------------------
+    limit: int
+        The upper bound up to which primes should be counted.
+
+    Return value:
+    ------------------------------
+    int:
+        The count of prime numbers.
+    """
+    if not isinstance(limit, int):
+        raise TypeError("Limit must be an integer.")
+    
+    if limit < 2:
+        return 0
+
+    # Start count at 1 to include the number 2
+    count = 1
+    
+    # Check only odd numbers up to the limit
+    for num in range(3, limit + 1, 2):
+        if is_prime(num):
+            count += 1
+            
+    return count
