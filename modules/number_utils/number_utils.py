@@ -311,3 +311,59 @@ def get_prev_prime(number: int) -> int:
         prev_num -= 2            
         
     return 2
+
+def get_prime_factors(number: int) -> list[int]:
+    """
+    Returns the list of prime factors
+
+    Parameters:
+    ------------------------------
+    number: int
+
+    Return value:
+    ------------------------------
+    list[int]:
+        Prime factors of number
+    """
+
+    if number <= 0:
+        raise ValueError("Negative numbers not allowed!")
+
+    primefactors = set()
+
+    for i in range(1, number + 1):
+        if number % i == 0:
+            if is_prime(i):
+                primefactors.add(i)
+
+    return sorted(list(primefactors))
+
+def get_nth_prime(n: int) -> int:
+    """
+    Returns the nth prime number
+
+    Parameters:
+    ------------------------------
+    n: int
+
+    Return value:
+    ------------------------------
+    int:
+        nth prime number
+    """
+
+    if n <= 0:
+        raise ValueError("The position 'n' must be a positive integer greater than 0.")
+        
+    if n == 1:
+        return 2
+    
+    count = 1           # we start counting from 1st prime number i.e 2
+    num = 3
+    
+    while True:
+        if is_prime(num):
+            count += 1
+            if count == n:
+                return num
+        num += 2
