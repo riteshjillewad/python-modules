@@ -588,3 +588,187 @@ def get_double_factorial(number: int) -> int:
             fact = fact * i
 
     return fact
+
+###########################################################################################
+# Number Properties
+###########################################################################################
+
+def is_composite(number: int) -> bool:
+    """
+    Checks if a number is a composite number.
+
+    Parameters:
+    ------------------------------
+    number: int
+
+    Return value:
+    ------------------------------
+    bool:
+        True if the number is composite, False otherwise.
+    """
+
+    if not isinstance(number, int):
+        raise TypeError("Input must be an integer.")
+    
+    # Numbers less than or equal to 3, and all negative numbers, are not composite
+    if number <= 3:
+        return False
+
+    # A composite number is any positive integer greater than 1 that is not prime
+    return not is_prime(number)
+
+def is_power_of_three(number: int) -> bool:
+    """
+    Checks if a number is a perfect power of three.
+
+    Parameters:
+    ------------------------------
+    number: int
+
+    Return value:
+    ------------------------------
+    bool:
+        True if the number is a power of three, False otherwise.
+    """
+
+    if not isinstance(number, int):
+        raise TypeError("Input must be an integer.")
+    
+    if number <= 0:
+        return False
+
+    while number % 3 == 0:
+        number //= 3
+
+    return number == 1
+
+def is_power_of_two(number: int) -> bool:
+    """
+    Checks if a number is a perfect power of two.
+
+    Parameters:
+    ------------------------------
+    number: int
+
+    Return value:
+    ------------------------------
+    bool:
+        True if the number is a power of two, False otherwise.
+    """
+
+    if not isinstance(number, int):
+        raise TypeError("Input must be an integer.")
+        
+    # Powers of 2 must be strictly greater than 0
+    if number <= 0:
+        return False
+        
+    # Bitwise trick: checks if only one bit is set to 1
+    return (number & (number - 1)) == 0
+
+def is_square(number: int) -> bool:
+    """
+    Checks if a number is a perfect square.
+
+    Parameters:
+    ------------------------------
+    number: int
+
+    Return value:
+    ------------------------------
+    bool:
+        True if the number is a perfect square, False otherwise.
+    """
+
+    if not isinstance(number, int):
+        raise TypeError("Input must be an integer.")
+    
+    if number < 0:
+        return False
+
+    root = round(get_square_root(number))
+    return root * root == number
+
+def is_deficient(number: int) -> bool:
+    """
+    Checks if a number is a deficient number.
+
+    Parameters:
+    ------------------------------
+    number: int
+
+    Return value:
+    ------------------------------
+    bool:
+        True if the number is deficient, False otherwise.
+    """
+
+    if not isinstance(number, int):
+        raise TypeError("Input must be an integer.")
+    
+    if number <= 0:
+        raise ValueError("Input must be a positive integer.")
+
+    factor_sum = 0
+
+    for i in range(1, number):
+        if number % i == 0:
+            factor_sum += i
+
+    return factor_sum < number
+
+def is_abundant(number: int) -> bool:
+    """
+    Checks if a number is an abundant number.
+
+    Parameters:
+    ------------------------------
+    number: int
+
+    Return value:
+    ------------------------------
+    bool:
+        True if the number is abundant, False otherwise.
+    """
+
+    if not isinstance(number, int):
+        raise TypeError("Input must be an integer.")
+    
+    if number <= 0:
+        raise ValueError("Input must be a positive integer.")
+
+    factor_sum = 0
+
+    for i in range(1, number):
+        if number % i == 0:
+            factor_sum += i
+
+    return factor_sum > number
+
+def is_perfect(number: int) -> bool:
+    """
+    Checks if a number is a perfect number.
+
+    Parameters:
+    ------------------------------
+    number: int
+
+    Return value:
+    ------------------------------
+    bool:
+        True if the number is perfect, False otherwise.
+    """
+
+    if not isinstance(number, int):
+        raise TypeError("Input must be an integer.")
+    
+    if number <= 0:
+        raise ValueError("Input must be a positive integer.")
+
+    factor_sum = 0
+
+    for i in range(1, number):
+        if number % i == 0:
+            factor_sum += i
+
+    return factor_sum == number
