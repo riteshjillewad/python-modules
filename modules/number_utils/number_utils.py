@@ -521,3 +521,70 @@ def get_lcm(a: int, b: int) -> int:
     b = abs(b)
 
     return (a // get_gcd(a, b)) * b
+
+###########################################################################################
+# Mathematical Operations
+###########################################################################################
+
+def get_factorial(number: int) -> int:
+    """
+    Returns the factorial of number
+
+    Parameters:
+    ------------------------------
+    number: int
+
+    Return value:
+    ------------------------------
+    int:
+        Factorial of number
+    """
+
+    if not isinstance(number, int):
+        raise ValueError("Input must be integer.")
+    
+    if number == 0:
+        return 1
+    
+    fact = 1
+    for i in range(number, 0, -1):
+        fact = fact * i
+
+    return fact
+
+def get_double_factorial(number: int) -> int:
+    """
+    Returns the double factorial of number
+
+    Parameters:
+    ------------------------------
+    number: int
+
+    Return value:
+    ------------------------------
+    int:
+        Factorial of number
+    """
+
+    if not isinstance(number, int):
+        raise ValueError("Input must be an integer.")
+    
+    if number < 0:
+        raise ValueError("Double factorial is not defined for negative integers.")
+    
+    if number == 0 or number == 1:
+        return 1
+    
+    fact = 1
+    
+    # case 1: if number is odd, the series multiplies down to 1
+    if number % 2 != 0:
+        for i in range(number, 0, -2):
+            fact = fact * i
+
+    # case 2: if number is even, the series multiplies down to 2
+    if number % 2 == 0:
+        for i in range(number, 1, -2):
+            fact = fact * i
+
+    return fact
