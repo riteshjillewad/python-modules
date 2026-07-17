@@ -10,7 +10,10 @@ from array_utils import *
 
 def main():
 
-    pass
+    nums = [10.25, 20, 30, 40, 50]
+
+    ret = get_arr_len(nums)
+    print(f"Length: {ret}")
 
 if __name__ == "__main__":
     main()
